@@ -13,11 +13,7 @@ public class Ex4 {
     }
 
     static int numberValidator(int num) {
-        num = Math.abs(num);
-        if (num > 20) {
-            num = 20;
-        }
-        return num;
+        return Math.min(Math.abs(num), 20);
     }
 
     static String countdown(int num) {
