@@ -9,15 +9,24 @@ public class Ex4 {
     static void main(String[] args) {
 
         Scanner launcher = new Scanner(System.in);
-        System.out.println("Inserire i secondi per il conto alla rovescia");
-        int sec = Integer.parseInt(launcher.nextLine());
-        System.out.println("Modalità simulazione? y/n (default no)");
-        String mode = launcher.nextLine();
-        if ("y".equals(mode)) {
-            simulatorCountdown(sec);
-        } else {
-            System.out.println(countdown(sec));
-        }
+        boolean online = true;
+
+        do {
+            System.out.println("Inserire i secondi per il conto alla rovescia");
+            int sec = Integer.parseInt(launcher.nextLine());
+            System.out.println("Modalità simulazione? y/n (default no)");
+            String mode = launcher.nextLine();
+            if ("y".equals(mode)) {
+                simulatorCountdown(sec);
+            } else {
+                System.out.println(countdown(sec));
+            }
+            System.out.println("Vuoi lanciare un altro razzo? y/n (default no)");
+            String repeater = launcher.nextLine();
+            if (!"y".equals(repeater)) {
+                online = false;
+            }
+        } while (online);
 
 
     }
