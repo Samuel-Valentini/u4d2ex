@@ -7,8 +7,7 @@ public class Ex4 {
 
         Scanner launcher = new Scanner(System.in);
         System.out.println("Inserire i secondi per il conto alla rovescia");
-
-        System.out.println(countdown(numberValidator(Integer.parseInt(launcher.nextLine()))));
+        System.out.println(countdown(Integer.parseInt(launcher.nextLine())));
 
     }
 
@@ -17,18 +16,13 @@ public class Ex4 {
     }
 
     static String countdown(int num) {
+        num = numberValidator(num);
         StringBuilder result = new StringBuilder();
         for (int i = num; i > 0; i--) {
-            if (i % 2 == 0) {
-                result.append("[OK] Secondo ").append(i).append("\n");
-                if (i == 10) {
-                    result.append("--- SEPARAZIONE STADIO ---\n");
-                }
-
-            } else {
-                result.append("[CHECK] Secondo ").append(i).append("\n");
+            result.append("[").append(i % 2 == 0 ? "OK" : "CHECK").append("] Secondo ").append(i).append("\n");
+            if (i == 10) {
+                result.append("--- SEPARAZIONE STADIO ---\n");
             }
-
         }
         result.append("--- IGNITION ---\n");
         return result.toString();
