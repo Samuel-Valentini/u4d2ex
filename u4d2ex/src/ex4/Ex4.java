@@ -1,5 +1,8 @@
 package ex4;
 
+import javax.sound.sampled.*;
+import java.io.File;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Ex4 {
@@ -55,6 +58,28 @@ public class Ex4 {
         }
         System.out.println("--- IGNITION ---\n");
         java.awt.Toolkit.getDefaultToolkit().beep();
+
+        try {
+            File audio = new File("mixkit-rocket-landing-whoosh-1721.wav");
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(audio);
+
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioStream);
+            clip.start();
+            Thread.sleep(5000);
+        } catch (
+                UnsupportedAudioFileException e) {
+            System.out.println("Formato audio non supportato.");
+        } catch (
+                IOException e) {
+            System.out.println("Errore di lettura del file audio.");
+        } catch (
+                LineUnavailableException e) {
+            System.out.println("Linea audio non disponibile.");
+        } catch (InterruptedException e) {
+            System.out.println("Timer offline");
+        }
+
 
     }
 
