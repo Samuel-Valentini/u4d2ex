@@ -7,7 +7,15 @@ public class Ex4 {
 
         Scanner launcher = new Scanner(System.in);
         System.out.println("Inserire i secondi per il conto alla rovescia");
-        System.out.println(countdown(Integer.parseInt(launcher.nextLine())));
+        int sec = Integer.parseInt(launcher.nextLine());
+        System.out.println("Modalità simulazione? y/n (default no)");
+        String mode = launcher.nextLine();
+        if ("y".equals(mode)) {
+            simulatorCountdown(sec);
+        } else {
+            System.out.println(countdown(sec));
+        }
+
 
     }
 
@@ -27,4 +35,23 @@ public class Ex4 {
         result.append("--- IGNITION ---\n");
         return result.toString();
     }
+
+    static void simulatorCountdown(int num) {
+        num = numberValidator(num);
+        for (int i = num; i > 0; i--) {
+            System.out.println(("[") + (i % 2 == 0 ? "OK" : "CHECK") + ("] Secondo ") + (i) + ("\n"));
+            if (i == 10) {
+                System.out.println("--- SEPARAZIONE STADIO ---\n");
+            }
+
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                System.out.println("---!!!EMERGENZA!!!--- Countdown interrotto");
+                return;
+            }
+        }
+        System.out.println("--- IGNITION ---\n");
+    }
+
 }
