@@ -44,6 +44,8 @@ public class Ex4 {
                 System.out.println("--- SEPARAZIONE STADIO ---\n");
             }
 
+            java.awt.Toolkit.getDefaultToolkit().beep();
+
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
@@ -52,6 +54,8 @@ public class Ex4 {
             }
         }
         System.out.println("--- IGNITION ---\n");
+        java.awt.Toolkit.getDefaultToolkit().beep();
+
     }
 
 }
